@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: dev-deployment
+ namespace: develop
+spec:
+ selector:
+  matchLabels:
+   app: dev
+ template: 
+  metadata:
+   labels:
+    app: dev
+  spec:
+   containers:
+   - name: dev-cont
+     image: nginx:latest
+     imagePullPolicy: Always
+     lifecycle:
+      postStart:
+       exec:
+        command: ["/bin/bash", "-c", "echo 'you are on dev.eugene-course.gq' > /usr/share/nginx/html/index.html"]

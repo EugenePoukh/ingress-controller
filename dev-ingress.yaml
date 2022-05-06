@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+ name: dev-ingress
+ namespace: develop
+ annotations:
+  kubernetes.io/ingress.class: "nginx"
+  kubernetes.io/tls-acme: "true"
+  cert-manager.io/cluster-issuer: my-letsencrypt-cert
+#  certmanager.k8s.io/cluster-issuer: "my-letsencrypt-cert"
+#  certmanager.k8s.io/acme-challenge-type: http01
+#  nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#  nginx.ingress.kubernetes.io/proxy-body-size: 100m
+spec:
+ tls:
+  - hosts: 
+     - dev.eugene-course.gq
+    secretName: dev-encrypt
+ rules:
+ - host: dev.eugene-course.gq
+   http: 
+    paths: 
+    - path: /
+      pathType: Prefix
+      backend:
+       service:
+        name: dev-service
+        port:
+         number: 80 
+# - host: dev.eugene-course.gq
+#   http:
+#    paths:
+#    - path: /
+#      pathType: Prefix
+#      backend:
+#       service:
+#        name: dev-service
+#        port:
+#         number: 80
+   
