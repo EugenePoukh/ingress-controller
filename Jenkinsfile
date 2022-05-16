@@ -4,25 +4,13 @@ pipeline {
     stages {
         stage('Deployment') {
             steps {
-               echo "Deploy deployment"
-               sh "export KUBECONFIG='/root/.kube/config'"
-	       sh "/usr/local/bin/kubectl apply -f dev-deployment.yaml -n develop"
+              # echo "Deploy deployment"
+              # sh "export KUBECONFIG='/root/.kube/config'"
+	      # sh "/usr/local/bin/kubectl apply -f dev-deployment.yaml -n develop"
+                sh ""/usr/local/bin/kubectl get pods -A"
                }
         }
-        stage('Service') {
-            steps {
-               echo "Deploy service"
-               sh "export KUBECONFIG='/root/.kube/config'"
-               sh "/usr/local/bin/kubectl apply -f dev-service.yaml -n develop"
-               }
-        }
-        stage('Ingress') {
-            steps {
-               echo "Deploy ingress rules"
-               sh "export KUBECONFIG='/root/.kube/config'"
-               sh "/usr/local/bin/kubectl apply -f dev-ingress.yaml -n develop"
-               }
-        }
+             
 
     }
 }
