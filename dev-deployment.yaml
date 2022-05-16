@@ -12,6 +12,7 @@ spec:
    labels:
     app: dev
   spec:
+   serviceAccountName: default
    containers:
    - name: dev-cont
      image: nginx:latest
