@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Deployment') {
             steps {
-                sh ""/usr/local/bin/kubectl get pods -A"
+                sh "/usr/local/bin/kubectl get pods -A"
                }
         }
              
