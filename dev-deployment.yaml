@@ -12,7 +12,7 @@ spec:
    labels:
     app: dev
   spec:
-   serviceAccountName: default
+   serviceAccountName: jenkins-admin
    containers:
    - name: dev-cont
      image: nginx:latest
