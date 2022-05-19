@@ -1,4 +1,4 @@
-node('jenkins') {
+node {
     
     stage('Deploy') {
         echo "Deploy To K8S Cluster Stage"
